@@ -1,3 +1,9 @@
+[![Build Status](https://travis-ci.org/jomof/yaml-cpp.svg?branch=master)](https://travis-ci.org/jomof/yaml-cpp)
+[![CDep Status](https://cdep-io.github.io/com.github.jomof/yaml-cpp/latest/latest.svg)](https://github.com/jomof/yaml-cpp/releases/latest)
+
+# CDep yml-cpp Package
+
+
 # yaml-cpp
 
 yaml-cpp is a [YAML](http://www.yaml.org/) parser and emitter in C++ matching the [YAML 1.2 spec](http://www.yaml.org/spec/1.2/spec.html).

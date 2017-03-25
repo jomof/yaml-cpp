@@ -13,19 +13,22 @@ matrix:
     script:
     - ./cdep
     - ./cmakeify --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os linux
-    - ./cmakeify -wf .cdep/examples/cmake --target-os linux
+    - ./cdep -wf build-examples
+    - ./cmakeify -wf build-examples/.cdep/examples/cmake --target-os linux
   
   - os: linux
     env: TARGET_OS=android
     script:
     - ./cdep
     - ./cmakeify --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os android
-    - ./cmakeify -wf .cdep/examples/cmake --target-os android
+    - ./cdep -wf build-examples
+    - ./cmakeify -wf build-examples/.cdep/examples/cmake --target-os android
   
   - os: osx
     env: TARGET_OS=iOS
     script:
     - ./cdep
     - ./cmakeify --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os iOS
-    - ./cmakeify -wf .cdep/examples/cmake --target-os iOS
+    - ./cdep -wf build-examples
+    - ./cmakeify -wf build-examples/.cdep/examples/cmake --target-os iOS
 

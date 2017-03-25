@@ -11,18 +11,21 @@ matrix:
         - gcc-4.8
         - g++-4.8
     script:
-    - ./cmakeify -wf yaml-cpp-yaml-cpp-0.5.3 --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os linux
-    - ./cmakeify -wf build-examples/.cdep/examples/cmake --target-os linux
+    - ./cmakeify --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os linux
+    - ./cdep
+    - ./cmakeify -wf .cdep/examples/cmake --target-os linux
   
   - os: linux
     env: TARGET_OS=android
     script:
-    - ./cmakeify -wf yaml-cpp-yaml-cpp-0.5.3 --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os android
-    - ./cmakeify -wf build-examples/.cdep/examples/cmake --target-os android
+    - ./cmakeify --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os android
+    - ./cdep
+    - ./cmakeify -wf .cdep/examples/cmake --target-os android
   
   - os: osx
     env: TARGET_OS=iOS
     script:
-    - ./cmakeify -wf yaml-cpp-yaml-cpp-0.5.3 --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os iOS
-    - ./cmakeify -wf build-examples/.cdep/examples/cmake --target-os iOS
+    - ./cmakeify --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os iOS
+    - ./cdep
+    - ./cmakeify -wf .cdep/examples/cmake --target-os iOS
 

@@ -1,0 +1,32 @@
+targets: [android, iOS]
+includes: [include]
+android:
+  lib: libyaml-cpp.a
+  flavors:
+    default: -DBOOST_ROOT=../boost_1_63_0
+  ndk:
+   runtimes: [c++]
+   platforms: [12, 21]
+   abis: [x86, x86_64, armeabi, armeabi-v7a]
+iOS:
+  lib: libyaml-cpp.a
+cdep:
+  dependencies:
+    - compile: com.github.jomof:boost:1.0.63-rev18
+      sha256: 3010adccbf87a78c5ab44940d212aab56797b53548226be16ca6532f66b44af3
+example: |
+  #include <yaml-cpp/yaml.h>
+  void test() {
+    YAML::Node primes = YAML::Load(\"[2, 3, 5, 7, 11]\");
+
+    for (std::size_t i=0;i<primes.size();i++) {
+      // Do something with primes[i].as<int>()
+    }
+
+    for (YAML::const_iterator it=primes.begin();it!=primes.end();++it) {
+      // Do something with it->as<int>()
+    }
+
+    primes.push_back(13);
+  }
+

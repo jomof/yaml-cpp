@@ -1,0 +1,54 @@
+language: c++
+matrix:
+  include:
+  - os: linux
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        packages:
+        - gcc-4.8
+        - g++-4.8
+    script:
+    - chmod +x cdep cmakeify
+    - wget https://github.com/jbeder/yaml-cpp/archive/yaml-cpp-0.5.3.zip
+    - unzip yaml-cpp-0.5.3.zip > nul
+    - wget https://github.com/jomof/boost/releases/download/1.0.63-rev8/boost_1_63_0.zip
+    - unzip boost_1_63_0.zip > nul
+    - cp cmakeify.yml yaml-cpp-yaml-cpp-0.5.3/cmakeify.yml
+    - ./cmakeify -wf yaml-cpp-yaml-cpp-0.5.3 --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os linux
+    - ./cdep -wf build-examples
+    - ./cmakeify -wf build-examples/.cdep/examples/cmake --target-os linux
+  
+  - os: linux
+    script:
+    - chmod +x cdep cmakeify
+    - wget https://github.com/jbeder/yaml-cpp/archive/yaml-cpp-0.5.3.zip
+    - unzip yaml-cpp-0.5.3.zip > nul
+    - wget https://github.com/jomof/boost/releases/download/1.0.63-rev8/boost_1_63_0.zip
+    - unzip boost_1_63_0.zip > nul
+    - cp cmakeify.yml yaml-cpp-yaml-cpp-0.5.3/cmakeify.yml
+    - ./cmakeify -wf yaml-cpp-yaml-cpp-0.5.3 --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os android
+    - ./cdep -wf build-examples
+    - ./cmakeify -wf build-examples/.cdep/examples/cmake --target-os android
+  
+  - os: iOS
+    script:
+    - chmod +x cdep cmakeify
+    - wget https://github.com/jbeder/yaml-cpp/archive/yaml-cpp-0.5.3.zip
+    - unzip yaml-cpp-0.5.3.zip > nul
+    - wget https://github.com/jomof/boost/releases/download/1.0.63-rev8/boost_1_63_0.zip
+    - unzip boost_1_63_0.zip > nul
+    - cp cmakeify.yml yaml-cpp-yaml-cpp-0.5.3/cmakeify.yml
+    - ./cmakeify -wf yaml-cpp-yaml-cpp-0.5.3 --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os iOS
+    - ./cdep -wf build-examples
+    - ./cmakeify -wf build-examples/.cdep/examples/cmake --target-os iOS
+deploy:
+  provider: releases
+  api_key:
+    secure: Xk1SBL9Tsy3xbY0k0hXbbo4u+TD5XNL3SZ6S3/t3xnD1nYejCXK2wW7uOjlT3Tdoxa0ANzEtADHR5DjUD8j+Yxdo5T1xoJsXeVPXEKO5n6B9f/9ndOFr40Jlg+Ae1dq997wXYbA32v4ahB3tRJgC7VB1HhSdxLJCkpFE7JIxqw0ctKtOTwvtqmGfJ+DWN1bhA8q37sWYrRIGPbSNUey8X7HZAeXmp5c4Fx3b379woUE9U1cgKq7qiV0uQgcJp8fhw4HBoFz24lFmq39LETqOdjp1DaXRYVnRF7bI19T5isereqc9FQMmRFxYN9xBfEOTmbc20sM0oLg458ORQ41MlThxhbThR63dkaIwLeBxzzuj6yLT7R2Nfm+OTMBA7KP14VdrzM3NHU+exaySRcd+Q2Q+BXWOJ8QuFE6OCMthIjKJ4sIdM9vtyn7KHO1Z1p7YuhJodiVBrn0HRYcB0yGKPnSw5PKle+xlgjGM/kpfJ6QVTuji7/3zELY/jeKCRHRlQ7C0rbwOFCCDeAi4Mu9tB79UW8/YDZxv4ZNqArbab3jHw73SaA4lgbMNe1A52sDgRsNHeg7i+cIiC4OiEyTGKWBgNk2E5l4Aqm9qLneGssVlTxLZLDDdo4UJjHkb2tmN7jVq8/wEuoVOBcfZI+UQfdZnvQ96l3a+a4aherrpf5o=
+  skip_cleanup: true
+  true: 
+    tags: true
+  file: 
+  - yaml-cpp-0.5.3.zip

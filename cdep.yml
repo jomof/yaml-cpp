@@ -1,4 +1,4 @@
 builders: [cmake, cmakeExamples]
 
 dependencies:
-- compile: ./build/zips/cdep-manifest.yml
+- compile: com.github.jomof:boost:1.0.63-rev18

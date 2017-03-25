@@ -11,21 +11,21 @@ matrix:
         - gcc-4.8
         - g++-4.8
     script:
-    - ./cmakeify --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os linux
     - ./cdep
+    - ./cmakeify --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os linux
     - ./cmakeify -wf .cdep/examples/cmake --target-os linux
   
   - os: linux
     env: TARGET_OS=android
     script:
-    - ./cmakeify --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os android
     - ./cdep
+    - ./cmakeify --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os android
     - ./cmakeify -wf .cdep/examples/cmake --target-os android
   
   - os: osx
     env: TARGET_OS=iOS
     script:
-    - ./cmakeify --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os iOS
     - ./cdep
+    - ./cmakeify --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os iOS
     - ./cmakeify -wf .cdep/examples/cmake --target-os iOS
 

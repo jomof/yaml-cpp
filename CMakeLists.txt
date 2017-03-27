@@ -113,7 +113,7 @@ endif()
 include_directories(${YAML_CPP_SOURCE_DIR}/src)
 include_directories(${YAML_CPP_SOURCE_DIR}/include)
 
-include(.cdep/modules/cdep-dependencies-config.cmake)
+include(.cdep/modules/cdep-dependencies-config.cmake REQUIRED)
 find_package(Boost REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS})
 

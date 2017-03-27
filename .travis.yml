@@ -12,8 +12,6 @@ matrix:
         - g++-4.8
     script:
     - ./cdep
-    - export boost=$(./cdep show include com.github.jomof:boost:1.0.63-rev21)
-    - echo $boost
     - ./cmakeify --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os linux
     - ./cdep -wf build-examples
     - ./cmakeify -wf build-examples/.cdep/examples/cmake --target-os linux
@@ -22,8 +20,6 @@ matrix:
     env: TARGET_OS=android
     script:
     - ./cdep
-    - export boost=$(./cdep show include com.github.jomof:boost:1.0.63-rev21)
-    - echo $boost
     - ./cmakeify --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os android
     - ./cdep -wf build-examples
     - ./cmakeify -wf build-examples/.cdep/examples/cmake --target-os android
@@ -32,8 +28,6 @@ matrix:
     env: TARGET_OS=iOS
     script:
     - ./cdep
-    - export boost=$(./cdep show include com.github.jomof:boost:1.0.63-rev21)
-    - echo $boost
     - ./cmakeify --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os iOS
     - ./cdep -wf build-examples
     - ./cmakeify -wf build-examples/.cdep/examples/cmake --target-os iOS

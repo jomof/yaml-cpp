@@ -13,7 +13,7 @@ matrix:
     script:
     - ./cdep
     - cat .cdep/modules/cdep-dependencies-config.cmake
-    - ./cmakeify --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os linux
+    - ./cmakeify --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os linux --cmake-flags "--target yaml-cpp"
     - ./cdep -wf build-examples
     - ./cmakeify -wf build-examples/.cdep/examples/cmake --target-os linux
   

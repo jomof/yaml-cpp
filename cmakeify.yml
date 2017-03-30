@@ -1,15 +1,13 @@
 targets: [android, iOS]
+buildTarget: yaml-cpp
 includes: [include]
 android:
-  lib: libyaml-cpp.a
   flavors:
     default: -DBOOST_ROOT=../boost_1_63_0
   ndk:
    runtimes: [c++]
    platforms: [12, 21]
    abis: [x86, x86_64, armeabi, armeabi-v7a]
-iOS:
-  lib: libyaml-cpp.a
 cdep:
   dependencies:
     - compile: com.github.jomof:boost:1.0.63-rev18

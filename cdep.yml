@@ -1,4 +1,4 @@
 builders: [cmake, cmakeExamples]
 
 dependencies:
-- compile: com.github.jomof:boost:1.0.63-rev18
+- compile: com.github.jomof:boost:1.0.63-rev21

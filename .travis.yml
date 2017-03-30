@@ -20,6 +20,7 @@ matrix:
   - os: linux
     env: TARGET_OS=android
     script:
+    - ./cdep --version
     - ./cdep
     - ./cmakeify --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os android
     - ./cdep -wf build-examples

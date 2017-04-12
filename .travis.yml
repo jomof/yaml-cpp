@@ -33,4 +33,3 @@ matrix:
     - ./cmakeify --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os iOS
     - ./cdep -wf build-examples
     - ./cmakeify -wf build-examples/.cdep/examples/cmake --target-os iOS
-

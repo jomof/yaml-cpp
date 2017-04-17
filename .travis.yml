@@ -12,7 +12,7 @@ matrix:
         - gcc-4.8
         - g++-4.8
     script:
-    - ./cdep
+    - ./cdep redownload
     - cat .cdep/modules/cdep-dependencies-config.cmake
     - ./cmakeify --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os linux
     - ./cdep -wf build-examples
@@ -21,7 +21,7 @@ matrix:
   - os: linux
     env: TARGET_OS=android
     script:
-    - ./cdep
+    - ./cdep redownload
     - ./cmakeify --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os android
     - ./cdep -wf build-examples
     - ./cmakeify -wf build-examples/.cdep/examples/cmake --target-os android
@@ -29,7 +29,7 @@ matrix:
   - os: osx
     env: TARGET_OS=iOS
     script:
-    - ./cdep
+    - ./cdep redownload
     - ./cmakeify --group-id com.github.jomof --artifact-id yaml-cpp --target-version ${TRAVIS_TAG:-0.0.0} --target-os iOS
     - ./cdep -wf build-examples
     - ./cmakeify -wf build-examples/.cdep/examples/cmake --target-os iOS

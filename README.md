@@ -1,7 +1,12 @@
 [![Build Status](https://travis-ci.org/jomof/yaml-cpp.svg?branch=master)](https://travis-ci.org/jomof/yaml-cpp)
-[![CDep Status](https://cdep-io.github.io/com.github.jomof/yaml-cpp/latest/latest.svg)](https://github.com/jomof/yaml-cpp/releases/latest)
 
-# CDep yml-cpp Package
+# CDep Packaging of Yaml-CPP Library
+Include these in your cdep.yml file. More recent versions may be available, see releases.
+```
+- compile: com.github.jomof:yaml-cpp:0.5.3-rev20
+```
+Go [here](https://github.com/google/cdep) to get started using CDep package manager.
+
 
 
 # yaml-cpp
